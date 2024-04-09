@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="raspberry-pi-pico-introduction">Raspberry Pi Pico( Introduction)</h1>
+<p>This is an introductory session on Raspbeery Pi Pico.</p>
+<h2 id="what-is-raspberry-pi-pico-rpi-pico">What is Raspberry Pi Pico( RPi Pico)</h2>
+<p>RPi Pico is a microcontroller.</p>
+<h3 id="what-is-a-microcontroller">What is a microcontroller?</h3>
+<p>Microcontroller is a small device which is used to control other devices it is built into and execute specific defined task. For example, it can control LED lights, buzzers, sensors, displays, etc. when connected to it. Microcontrollers usually use less power.</p>
+<h3 id="difference-between-microcontroller-and-microprocessor">Difference between microcontroller and microprocessor</h3>
+<p>Visually both microprocessor and microcontroller almost look identical. They are different in terms of the application in which they are used, processing power, memory, cost and power  consumption. Microcontroller tend to use less power, where the task is pre-defined. While, your microprocessors are used in devices which requires intensive processing and where the task can be <code>not pre-defined</code>. For example, in a microwave, the task is pre-defined and you only need to input the time and temperature. Therefore, a microwave uses a microcontroller to do its job.<br>
+Another important difference is their structure. A microprocessor consists only of a CPU( Central processing unit), and all the other processing elements like RAM( Random access memory), ROM( Read-Only memory), I/O ports, etc. are connected externally to it( You can see this if you open your pc). Now, whereas, all the above-mentioned component are present internally in-case of microcontrollers( this is the big chip you see in your RPi Pico).</p>
+<h3 id="difference-between-rpi-pico-and-other-rpi-models">Difference between RPi Pico and other RPi models</h3>
+<p>Other RPi contain microprocessor and can be considered as a mini-computer than a microcontroller.</p>
+<h3 id="which-is-better-arduino-vs-rpi-pico">Which is better?( Arduino vs RPi Pico)</h3>
+<p>Arduino contains a wide range of microcontrollers( no microprocessors though). And for a small scale project a RPi Pico is way better than an Arduino nano( the smallest and cheapest model Arduino offers) in terms of memory, processing power, cost and other factors.</p>
+<h2 id="design-of-your-rpi-pico">Design of your RPi Pico</h2>
+<p>Your RPi Pico contains RP2040 chip. Which contains 264KB worth of memory, which is really large when compared to other microcontrollers. And 2 Flash memories. The Microcontroller chip( RP2040) is connected to the pins on the either sides of the board. These pins are called GPIO( General purpose input output) pins, and can be used to connect other devices like sensors, LED display, etc. The bumps at the edge of the board are called cancellations and are used to solder other components( mentioned above). You also have a BOOTSEL button and a LED. And finally, you can write programs by connecting your RPi Pico to a computer using a micro USB cable.<br>
+Download the <a href="https://datasheets.raspberrypi.com/pico/Pico-R3-A4-Pinout.pdf">labelled pinout diagram of the board</a>.</p>
+<h2 id="doing-things-with-your-rpi-pico">Doing things with your RPi Pico</h2>
+<p>You can add executable files on your RPi Pico using a micro USB cable, computer and a software called <a href="https://thonny.org">Thonny</a>.</p>
+<h3 id="accessing-the-rpi-pico-as-a-memory-device">Accessing the RPi Pico as a memory device</h3>
+<ul>
+<li>Connect the micro USB cable to your RPi Pico and a computer while holding the BOOTSEL button.</li>
+<li>This will open the RPi Pico as a storage device and will contain the <code>INDEX.HTM</code> file.</li>
+</ul>
+<h3 id="using-micropython-to-write-code">Using micropython to write code</h3>
+<ul>
+<li>RPi Pico can be used with micropython( it is the implementation of python3 in c for small, low-power consuming microcontrollers). To use this you need install a software called <a href="https://thonny.org">Thonny</a>.</li>
+<li>Go to <a href="https://thonny.org">https://thonny.org</a> and install thonny for your operating system.</li>
+<li>The following code toggles the LED present on the RPi ON/OFF at regular intervals. Copy the code and paste in Thonny.</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">from</span> machine <span class="token keyword">import</span> Pin
+<span class="token keyword">import</span> utime
+<span class="token comment"># Define the onboard LED pin</span>
+led <span class="token operator">=</span> Pin<span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span> Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+<span class="token comment"># Loop to blink the LED</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    led<span class="token punctuation">.</span>toggle<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#Turns the LED on </span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span> <span class="token comment">#Keeps the LED on for 0.2s</span>
+    led<span class="token punctuation">.</span>toggle<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#Turn the LED off</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#Waits for 1s before starting again</span>
+</code></pre>
+<ul>
+<li>Next go to tools&gt;&gt;options&gt;&gt;interpreter</li>
+<li>Select <code>MicroPython (Raspberry Pi Pico)</code> from the dropdown menu.</li>
+<li>Click on <code>Install or update MicroPython</code> to install the UF2 onto your RPi Pico( more about it later).</li>
+<li>Now for Linux devices the software automatically detects the variant and version. But, for Windows devices you need to select them manually.</li>
+<li>&lt; For Windows devices only&gt;<br>
+Target volume model  - <code>RPI-RP2</code><br>
+Variant - <code>Raspberry Pi &lt;dot&gt; Pico/ Pico H</code><br>
+Version - <code>Auto-detected</code></li>
+<li>Now save the file with the filename as <code>main.py</code>. RPi will run only the file named <code>main.py</code>.</li>
+<li>Eject the device and disconnect the USB cable. Reconnect the USB cable <strong>without</strong> pressing the BOOTSEL button. The LED should turn ON/OFF at regular intervals.<br>
+For any doubts, bugs or errors, contact Mukti Core from our <a href="https://t.me/+wFGdHiypdQhkZWU9">telegram group</a> or drop a text on the <em>Tech-help</em> section on our <a href="https://t.me/+wFGdHiypdQhkZWU9">telegram group</a>.</li>
+</ul>
+<h3 id="why-micropython">Why micropython?</h3>
+<p>MicroPython is an implementation of python3 using C for low-level Chip-specific hardware like microcontrollers. Since microcontrollers are small and have less computing power, they can only run C/CPP/bash kind of files. So directly running python3 on RPi Pico is extremely inefficient. Therefore, micropython helps us in tackling this problem, as python3 is a very easy language to learn with simple syntax.<br>
+Check out the official <a href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython">micropython documentation</a>.</p>
+<h3 id="what-exactly-does-the-bootsel-button-do">What exactly does the BOOTSEL button do?</h3>
+<p>&lt;Credits:- Claude 1.2 Instant AI by Anthropic&gt;<br>
+The bootsel button on the Raspberry Pi Pico has a simple but important function - it allows you to choose which firmware/program will run when the board powers on or resets.<br>
+Here’s a breakdown in simple terms:</p>
+<ul>
+<li>The Pico has two separate flash memory banks that can each store a different program/firmware.</li>
+<li>One bank is labeled ‘A’ and the other ‘B’. Only one will run at a time.</li>
+<li>When you press the bootsel button and then reset/power cycle the Pico, it will toggle which bank runs next.</li>
+<li>Press and hold bootsel, reset, it chooses bank A. Reset again without button, it runs bank B.</li>
+<li>This allows you to easily switch between two different programs on the Pico.</li>
+<li>For example, you could have the MicroPython firmware in bank A and your own custom C/C++ code in bank B.</li>
+<li>Press bootsel to try your code, or press it to go back to MicroPython if your code doesn’t work.<br>
+So in simple terms, the bootsel button just lets you pick which of the two flash banks (and its contents) will run when you next power on or reset the Pico board. It’s a quick way to switch between programs without needing a computer.</li>
+</ul>
+<h3 id="what-is-a-uf2-file">What is a UF2 file?</h3>
+<p>UF2 stands for “MicroPython Firmware Update Format”. It was created by MicroPython for easy  firmware updates for boards without a native bootloader. UF2 files contain both the firmware image and a small bootloader program. Always, the bootloader runs first then the firmware. Each memory bank of RPi Pico can hold seperate UF2 files. It’s small, effective and open source.</p>
+<h4 id="another-method-to-add-the-uf2-file-not-recommended">Another method to add the UF2 file( Not recommended)</h4>
+<p>While adding your first micropython file and running it, we did not explicitly download and used any UF2 file because Thonny did it for us. But there is another way of doing it, which is to download the official UF2 file and pasting it in the RPi Pico while accessing it as a memory device.<br>
+<code>Note:- The following steps are applicable for all operating systems. For macos users, make sure you have macOS Ventura version 13.1 or above.</code><br>
+To do that follow the follow the following steps:</p>
+<ul>
+<li>Download the UF2 file for Raspberry Pi Pico <a href="https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2">here</a>.</li>
+<li>Press the BOOTSEL button, to open RPi Pico as a memory device.</li>
+<li>Drag and drop the UF2 file in it.</li>
+</ul>
+<h2 id="project-morse">Project Morse</h2>
+<p>We will be making a project to convert the input alphabetical string to morse code and use the LED to convey the message to us( in morse code).<br>
+You can write the code for that your self or copy the following code( credits:- ChatGPT)</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+<span class="token comment"># Define Morse code dictionary</span>
+morse_code <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'A'</span><span class="token punctuation">:</span> <span class="token string">'.-'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">:</span> <span class="token string">'-...'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">:</span> <span class="token string">'-.-.'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">:</span> <span class="token string">'-..'</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">:</span> <span class="token string">'.'</span><span class="token punctuation">,</span> <span class="token string">'F'</span><span class="token punctuation">:</span> <span class="token string">'..-.'</span><span class="token punctuation">,</span> <span class="token string">'G'</span><span class="token punctuation">:</span> <span class="token string">'--.'</span><span class="token punctuation">,</span> <span class="token string">'H'</span><span class="token punctuation">:</span> <span class="token string">'....'</span><span class="token punctuation">,</span>
+    <span class="token string">'I'</span><span class="token punctuation">:</span> <span class="token string">'..'</span><span class="token punctuation">,</span> <span class="token string">'J'</span><span class="token punctuation">:</span> <span class="token string">'.---'</span><span class="token punctuation">,</span> <span class="token string">'K'</span><span class="token punctuation">:</span> <span class="token string">'-.-'</span><span class="token punctuation">,</span> <span class="token string">'L'</span><span class="token punctuation">:</span> <span class="token string">'.-..'</span><span class="token punctuation">,</span> <span class="token string">'M'</span><span class="token punctuation">:</span> <span class="token string">'--'</span><span class="token punctuation">,</span> <span class="token string">'N'</span><span class="token punctuation">:</span> <span class="token string">'-.'</span><span class="token punctuation">,</span> <span class="token string">'O'</span><span class="token punctuation">:</span> <span class="token string">'---'</span><span class="token punctuation">,</span> <span class="token string">'P'</span><span class="token punctuation">:</span> <span class="token string">'.--.'</span><span class="token punctuation">,</span>
+    <span class="token string">'Q'</span><span class="token punctuation">:</span> <span class="token string">'--.-'</span><span class="token punctuation">,</span> <span class="token string">'R'</span><span class="token punctuation">:</span> <span class="token string">'.-.'</span><span class="token punctuation">,</span> <span class="token string">'S'</span><span class="token punctuation">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span> <span class="token string">'T'</span><span class="token punctuation">:</span> <span class="token string">'-'</span><span class="token punctuation">,</span> <span class="token string">'U'</span><span class="token punctuation">:</span> <span class="token string">'..-'</span><span class="token punctuation">,</span> <span class="token string">'V'</span><span class="token punctuation">:</span> <span class="token string">'...-'</span><span class="token punctuation">,</span> <span class="token string">'W'</span><span class="token punctuation">:</span> <span class="token string">'.--'</span><span class="token punctuation">,</span> <span class="token string">'X'</span><span class="token punctuation">:</span> <span class="token string">'-..-'</span><span class="token punctuation">,</span>
+    <span class="token string">'Y'</span><span class="token punctuation">:</span> <span class="token string">'-.--'</span><span class="token punctuation">,</span> <span class="token string">'Z'</span><span class="token punctuation">:</span> <span class="token string">'--..'</span><span class="token punctuation">,</span>
+    <span class="token string">'1'</span><span class="token punctuation">:</span> <span class="token string">'.----'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">:</span> <span class="token string">'..---'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">:</span> <span class="token string">'...--'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">:</span> <span class="token string">'....-'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">:</span> <span class="token string">'.....'</span><span class="token punctuation">,</span> <span class="token string">'6'</span><span class="token punctuation">:</span> <span class="token string">'-....'</span><span class="token punctuation">,</span> <span class="token string">'7'</span><span class="token punctuation">:</span> <span class="token string">'--...'</span><span class="token punctuation">,</span>
+    <span class="token string">'8'</span><span class="token punctuation">:</span> <span class="token string">'---..'</span><span class="token punctuation">,</span> <span class="token string">'9'</span><span class="token punctuation">:</span> <span class="token string">'----.'</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">:</span> <span class="token string">'-----'</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># LED pin</span>
+led_pin <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">morse_code_translator</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    morse <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> text<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> char <span class="token operator">==</span> <span class="token string">" "</span><span class="token punctuation">:</span>
+            morse <span class="token operator">+=</span> <span class="token string">" "</span>
+        <span class="token keyword">elif</span> char <span class="token keyword">in</span> morse_code<span class="token punctuation">:</span>
+            morse <span class="token operator">+=</span> morse_code<span class="token punctuation">[</span>char<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">" "</span>
+    <span class="token keyword">return</span> morse
+
+<span class="token keyword">def</span> <span class="token function">blink_morse_code</span><span class="token punctuation">(</span>morse_code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> symbol <span class="token keyword">in</span> morse_code<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> symbol <span class="token operator">==</span> <span class="token string">'.'</span><span class="token punctuation">:</span>
+            led_pin<span class="token punctuation">.</span>on<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span>
+            led_pin<span class="token punctuation">.</span>off<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> <span class="token string">'-'</span><span class="token punctuation">:</span>
+            led_pin<span class="token punctuation">.</span>on<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.6</span><span class="token punctuation">)</span>
+            led_pin<span class="token punctuation">.</span>off<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">:</span>
+            utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.4</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter text to convert to Morse code (press Enter to exit): "</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> user_input <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Exiting..."</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        morse <span class="token operator">=</span> morse_code_translator<span class="token punctuation">(</span>user_input<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Morse Code:"</span><span class="token punctuation">,</span> morse<span class="token punctuation">)</span>
+        blink_morse_code<span class="token punctuation">(</span>morse<span class="token punctuation">)</span>
+
+main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Use the same steps as before to add this <code>main.py</code> file to your RPi Pico.<br>
+This code will ask you for a input and converts the string to morse code and displays it by switching the LED on/off.<br>
+For any doubts, bugs or errors, contact Mukti Core from our <a href="https://t.me/+wFGdHiypdQhkZWU9">telegram group</a> or drop a text on the <em>Tech-help</em> section on our <a href="https://t.me/+wFGdHiypdQhkZWU9">telegram group</a>.</p>
+<h3 id="credits-san-mukti-core">Credits: @san, Mukti Core</h3>
+<p><a href="">Edit this page</a></p>
+</div>
+</body>
+
+</html>

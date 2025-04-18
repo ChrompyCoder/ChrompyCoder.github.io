@@ -1,19 +1,66 @@
 ﻿<!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome file</title>
-  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batsite</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<body class="stackedit">
-  <div class="stackedit__html"><h1 id="hey">Hey</h1>
-<h3 id="if-you-have-found-this-then-congo.-you-get-a-broomstick-made-of-hyphens-">If you have found this then congo., you get a broomstick made of hyphens :)</h3>
-<hr>
-<h2 id="section">---------------------------------&gt;&gt;&gt;&gt;&gt;</h2>
-</div>
+    <nav class="top-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="./index.html">./home</a></li>
+            <li><a href="./blog_index.html">./blog</a></li>
+            <li><a href="./about.html">./about</a></li>
+        </ul>
+    </nav>
+
+    <aside class="accessibility-controls" aria-labelledby="accessibility-heading">
+        <h4 id="accessibility-heading">Accessibility</h4>
+        <button id="theme-toggle">Light Theme</button>
+        <button id="contrast-toggle">High Contrast</button>
+        <button id="decrease-font" aria-label="Decrease font size">A-</button>
+        <button id="increase-font" aria-label="Increase font size">A+</button>
+        <p>Adjust settings</p>
+    </aside>
+
+    <div class="content-container">
+        <main id="main-content">
+            <header>
+                <h1 id="hey">Hey!</h1>
+            </header>
+
+            <section aria-labelledby="greeting-message">
+                <h3 id="greeting-message" class="sr-only">Greeting Message</h3>
+                <p>If you have found this then congo., you get a broomstick made of hyphens :)</p>
+                <hr>
+                <h2 id="section">---------------------------------&gt;&gt;&gt;&gt;&gt;</h2>
+            </section>
+
+            <hr>
+            <section aria-labelledby="online-presence">
+                <h3 id="Whomi">Who m i?</h3>
+                <p>
+                    Im san. A developer interested in backend and anywhere else you can intrigue me. 
+                </p>
+                <p>
+                    Check out my <a href="./blog_index.html">Blogs</a>
+                </p>
+
+            </section>
+            <section aria-labelledby="online-presence">
+                <h3 id="online-presence">Find @san online on:</h3>
+                <p>
+                    <a href="https://github.com/chrompycoder" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                    <a rel="me" href="https://mastodon.social/@san1927">Mastodon</a> |
+                    <a rel="linedin" href="www.linkedin.com/in/san1927">LinkedIn</a>
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <script src="./AccessibilityScript.js">   </script>
 </body>
-
 </html>

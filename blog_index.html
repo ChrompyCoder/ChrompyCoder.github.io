@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Index - Batsite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="top-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="./index.html">./home</a></li>
+            <li><a href="./blog_index.html">./blog</a></li>
+            <li><a href="./about.html">./about</a></li>
+        </ul>
+    </nav>
+
+    <aside class="accessibility-controls" aria-labelledby="accessibility-heading">
+        <h4 id="accessibility-heading">Accessibility</h4>
+        <button id="theme-toggle">Light Theme</button>
+        <button id="contrast-toggle">High Contrast</button>
+        <button id="decrease-font" aria-label="Decrease font size">A-</button>
+        <button id="increase-font" aria-label="Increase font size">A+</button>
+        <p>Adjust settings</p>
+    </aside>
+
+    <div class="content-container">
+        <main id="main-content">
+            <header>
+                <h1>Blog Posts</h1>
+                <p>Hush, im doing this na.</p>
+            </header>
+
+            <section aria-labelledby="blog-list-heading">
+                <h2 id="blog-list-heading" class="sr-only">List of Blog Posts</h2>
+                
+                <ul class="blog-list">
+                    <li class="blog-item">
+                        <h3 class="blog-title"><a href="./blog/01.html">Learning while building a basic password manager</a></h3>
+                        <!-- <div class="blog-meta">
+                            <span class="date">April 15, 2025</span> | <span class="category">Accessibility</span>
+                        </div> -->
+                        <p class="blog-excerpt">Things i learnt from my first project, a swifty password manager.</p>
+                        <a href="./blog/01.html" class="read-more">Read more →</a>
+                    </li>
+                </ul>
+            </section>
+            <header>
+                <h1>Community Blog Posts</h1>
+                <p>Clink.</p>
+            </header>
+
+            <section aria-labelledby="blog-list-heading">
+                <h2 id="blog-list-heading" class="sr-only">List of Blog Posts</h2>
+                
+                <ul class="blog-list">
+                    <li class="blog-item">
+                        <h3 class="blog-title"><a href="https://mukticommunity.github.io/learning_exp/2024/10/23/The-chain-of-topics.html">The Learning conondrum</a></h3>
+                        <!-- <div class="blog-meta">
+                            <span class="date">April 15, 2025</span> | <span class="category">Accessibility</span>
+                        </div> -->
+                        <p class="blog-excerpt">How i learn things.</p>
+                        <a href="https://mukticommunity.github.io/learning_exp/2024/10/23/The-chain-of-topics.html" class="read-more">Read more →</a>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="./AccessibilityScript.js">   </script>
+</body>
+</html>
